@@ -1,96 +1,345 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#07101f">
-  <meta name="description" content="AI International School">
+  <meta name="description" content="AI International School - Learn, explore and create with AI.">
+  <meta name="theme-color" content="#ffffff">
   <title>AI International School</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
-      background: #07101f;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 900px;
-      text-align: center;
-    }
-
-    .logo {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 24px;
-      border-radius: 20px;
-      background: #6ea8fe;
-      color: #07101f;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      font-weight: 900;
-    }
-
-    h1 {
-      margin: 0 0 16px;
-      font-size: clamp(2.2rem, 7vw, 5rem);
-      line-height: 1.05;
-    }
-
-    p {
-      color: #aab6c8;
-      font-size: 1.1rem;
-      line-height: 1.7;
-    }
-
-    .status {
-      margin: 32px auto 0;
-      padding: 20px;
-      max-width: 600px;
-      border: 1px solid #263650;
-      border-radius: 16px;
-      background: #0d182b;
-    }
-
-    .status strong {
-      color: #69d39a;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <main class="container">
+  <header class="site-header">
+    <div class="container header-content">
 
-    <div class="logo">AI</div>
+      <a href="index.html" class="brand">
+        <span class="brand-name">AI International School</span>
+      </a>
 
-    <h1>AI International School</h1>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html" class="active">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="#ai-teacher">AI Teacher</a>
+        <a href="#ai-lab">AI Lab</a>
+        <a href="#about">About</a>
+      </nav>
 
-    <p>
-      Welcome to the beginning of a new international learning platform.
-    </p>
+      <div class="header-actions">
+        <a href="login.html" class="login-link">Login</a>
+        <a href="signup.html" class="btn btn-primary">Get Started</a>
+      </div>
 
-    <div class="status">
-      <strong>BUILD TEST 1 — SUCCESS</strong>
-      <p>
-        The AI International School repository is working.
-      </p>
+      <button class="menu-button" id="menuButton" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
     </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="#ai-teacher">AI Teacher</a>
+      <a href="#ai-lab">AI Lab</a>
+      <a href="#about">About</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html" class="mobile-get-started">Get Started</a>
+    </div>
+  </header>
+
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-content">
+
+        <div class="hero-text">
+          <span class="hero-badge">Learning powered by AI</span>
+
+          <h1>
+            Learn.
+            <span>Explore.</span>
+            Create.
+            With AI.
+          </h1>
+
+          <p>
+            AI International School is a modern learning platform designed
+            to help students learn, practice, create and grow with the help
+            of artificial intelligence.
+          </p>
+
+          <div class="hero-actions">
+            <a href="signup.html" class="btn btn-primary btn-large">
+              Start Learning
+            </a>
+
+            <a href="courses.html" class="btn btn-secondary btn-large">
+              Explore Courses
+            </a>
+          </div>
+
+          <div class="hero-note">
+            <span>15-Day Free Trial</span>
+            <span>•</span>
+            <span>Learn at your level</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="learning-card">
+
+            <div class="card-top">
+              <span class="card-label">AI Learning</span>
+              <span class="card-status">● Active</span>
+            </div>
+
+            <div class="ai-circle">
+              <span>AI</span>
+            </div>
+
+            <h2>Your AI Teacher</h2>
+
+            <p>
+              Ask questions, understand lessons, practice and improve
+              your knowledge.
+            </p>
+
+            <div class="learning-progress">
+              <div class="progress-info">
+                <span>Learning progress</span>
+                <strong>72%</strong>
+              </div>
+
+              <div class="progress-bar">
+                <div class="progress-value"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="features" id="features">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="section-label">Everything you need</span>
+          <h2>A smarter way to learn</h2>
+          <p>
+            Learn through lessons, practice, AI assistance and assessments
+            in one connected learning environment.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+
+          <article class="feature-card">
+            <div class="feature-icon">🎓</div>
+            <h3>Learn by Level</h3>
+            <p>
+              Study according to your education level, from Primary to
+              Secondary.
+            </p>
+          </article>
+
+          <article class="feature-card" id="ai-teacher">
+            <div class="feature-icon">🤖</div>
+            <h3>AI Teacher</h3>
+            <p>
+              Get help understanding lessons, asking questions and
+              practicing difficult topics.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>Courses</h3>
+            <p>
+              Explore structured subjects and lessons designed for
+              continuous learning.
+            </p>
+          </article>
+
+          <article class="feature-card" id="ai-lab">
+            <div class="feature-icon">🧪</div>
+            <h3>AI Lab</h3>
+            <p>
+              Explore technology, experiments, projects and creative ideas
+              using AI.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>Quizzes & Assessments</h3>
+            <p>
+              Practice what you learn and measure your understanding through
+              quizzes and assessments.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🏆</div>
+            <h3>Certificates</h3>
+            <p>
+              Track completed learning programs and earn certificates as
+              you progress.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="levels">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="section-label">Education levels</span>
+          <h2>Learn at your level</h2>
+          <p>
+            AI International School is structured around the student's
+            education level.
+          </p>
+        </div>
+
+        <div class="level-grid">
+
+          <article class="level-card">
+            <span class="level-number">01</span>
+            <h3>Primary</h3>
+            <p>P1 to P6</p>
+            <a href="courses.html">Explore Primary</a>
+          </article>
+
+          <article class="level-card">
+            <span class="level-number">02</span>
+            <h3>Ordinary</h3>
+            <p>S1 to S3</p>
+            <a href="courses.html">Explore Ordinary</a>
+          </article>
+
+          <article class="level-card">
+            <span class="level-number">03</span>
+            <h3>Secondary</h3>
+            <p>S4 to S6</p>
+            <a href="courses.html">Explore Secondary</a>
+          </article>
+
+          <article class="level-card">
+            <span class="level-number">04</span>
+            <h3>Vocational Programs</h3>
+            <p>Practical skills and career learning</p>
+            <a href="courses.html">Explore Programs</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="how-it-works">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="section-label">Simple learning journey</span>
+          <h2>How it works</h2>
+        </div>
+
+        <div class="steps">
+
+          <div class="step">
+            <span class="step-number">1</span>
+            <h3>Create Account</h3>
+            <p>Create your student account and set up your learning profile.</p>
+          </div>
+
+          <div class="step">
+            <span class="step-number">2</span>
+            <h3>Choose Your Level</h3>
+            <p>Select the education level and courses you want to study.</p>
+          </div>
+
+          <div class="step">
+            <span class="step-number">3</span>
+            <h3>Learn & Practice</h3>
+            <p>Study lessons, ask the AI Teacher and practice your skills.</p>
+          </div>
+
+          <div class="step">
+            <span class="step-number">4</span>
+            <h3>Test & Progress</h3>
+            <p>Complete quizzes and assessments while tracking your progress.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="cta-section" id="about">
+      <div class="container">
+
+        <div class="cta-card">
+          <div>
+            <span class="section-label">Start your journey</span>
+            <h2>Build your future through learning.</h2>
+            <p>
+              Join AI International School and discover a modern way
+              to learn with technology and AI.
+            </p>
+          </div>
+
+          <a href="signup.html" class="btn btn-light btn-large">
+            Get Started
+          </a>
+        </div>
+
+      </div>
+    </section>
 
   </main>
 
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+
+      <div>
+        <h3>AI International School</h3>
+        <p>
+          Learn. Explore. Create. With AI.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+      </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+      <p>
+        © 2026 AI International School. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+
+  <script src="js/app.js"></script>
+
 </body>
 </html>
+```
