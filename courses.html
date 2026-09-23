@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="AI International School - Choose your learning level, class, and subjects."
+  >
+  <title>Courses | AI International School</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="index.html" class="brand">
+        AI International School
+      </a>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        ☰
+      </button>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="courses.html" class="active">Courses</a>
+        <a href="#">AI Teacher</a>
+        <a href="#">AI Lab</a>
+        <a href="#">About</a>
+        <a href="#">Login</a>
+        <a href="signup.html" class="btn btn-primary">Get Started</a>
+      </nav>
+
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav
+      class="mobile-nav"
+      id="mobileMenu"
+      aria-label="Mobile navigation"
+    >
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="#">AI Teacher</a>
+      <a href="#">AI Lab</a>
+      <a href="#">About</a>
+      <a href="#">Login</a>
+      <a href="signup.html" class="btn btn-primary">Get Started</a>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-content">
+
+        <span class="eyebrow">
+          AI-Powered Learning
+        </span>
+
+        <h1>
+          Choose Your Learning Level
+        </h1>
+
+        <p>
+          Select your education level, choose your class, and discover the
+          subjects available for your learning journey.
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- Education Levels -->
+    <section class="section">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">Step 1</span>
+
+          <h2>
+            Choose Your Level
+          </h2>
+
+          <p>
+            Start by selecting the education level you want to explore.
+          </p>
+        </div>
+
+
+        <div class="level-grid">
+
+          <!-- Primary -->
+          <button
+            class="level-card"
+            type="button"
+            onclick="showClasses('primary')"
+          >
+            <div class="level-icon">📚</div>
+
+            <h3>
+              Primary
+            </h3>
+
+            <p>
+              P1 – P6
+            </p>
+
+            <span>
+              Explore classes →
+            </span>
+          </button>
+
+
+          <!-- Ordinary -->
+          <button
+            class="level-card"
+            type="button"
+            onclick="showClasses('ordinary')"
+          >
+            <div class="level-icon">🎓</div>
+
+            <h3>
+              Ordinary
+            </h3>
+
+            <p>
+              S1 – S3
+            </p>
+
+            <span>
+              Explore classes →
+            </span>
+          </button>
+
+
+          <!-- Secondary -->
+          <button
+            class="level-card"
+            type="button"
+            onclick="showClasses('secondary')"
+          >
+            <div class="level-icon">🏫</div>
+
+            <h3>
+              Secondary
+            </h3>
+
+            <p>
+              S4 – S6
+            </p>
+
+            <span>
+              Explore classes →
+            </span>
+          </button>
+
+
+          <!-- Vocational -->
+          <button
+            class="level-card"
+            type="button"
+            onclick="showClasses('vocational')"
+          >
+            <div class="level-icon">🛠️</div>
+
+            <h3>
+              Vocational Programs
+            </h3>
+
+            <p>
+              Practical & Professional Skills
+            </p>
+
+            <span>
+              Explore programs →
+            </span>
+          </button>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Classes -->
+    <section
+      class="section"
+      id="classesSection"
+      style="display: none;"
+    >
+
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">Step 2</span>
+
+          <h2 id="classesTitle">
+            Choose Your Class
+          </h2>
+
+          <p id="classesDescription">
+            Select the class you want to explore.
+          </p>
+        </div>
+
+
+        <div
+          class="level-grid"
+          id="classesContainer"
+        ></div>
+
+      </div>
+    </section>
+
+
+    <!-- Class Preview -->
+    <section
+      class="section"
+      id="previewSection"
+      style="display: none;"
+    >
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <span class="eyebrow">
+            Step 3
+          </span>
+
+          <h2 id="previewTitle">
+            Class Preview
+          </h2>
+
+          <p id="previewDescription">
+            Explore the subjects available in this class.
+          </p>
+
+        </div>
+
+
+        <!-- Selected Class -->
+        <div
+          class="learning-card"
+          id="selectedClassCard"
+        >
+
+          <div class="learning-card-content">
+
+            <span
+              class="eyebrow"
+              id="previewLevel"
+            >
+              Learning Level
+            </span>
+
+            <h3 id="previewClass">
+              Selected Class
+            </h3>
+
+            <p>
+              This class will have a structured curriculum designed to guide
+              students step by step from one lesson to the next.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Subjects -->
+        <div
+          class="section-heading"
+          style="margin-top: 40px;"
+        >
+
+          <span class="eyebrow">
+            Subjects
+          </span>
+
+          <h2>
+            Subjects in This Class
+          </h2>
+
+          <p>
+            Each subject will have its own dedicated AI Teacher.
+          </p>
+
+        </div>
+
+
+        <div
+          class="feature-grid"
+          id="subjectsContainer"
+        ></div>
+
+
+        <!-- AI Teacher Explanation -->
+        <div
+          class="learning-card"
+          style="margin-top: 40px;"
+        >
+
+          <div class="learning-card-content">
+
+            <span class="eyebrow">
+              AI Teacher
+            </span>
+
+            <h3>
+              Every Subject Has Its Own AI Teacher
+            </h3>
+
+            <p>
+              Students will learn with an AI Teacher specialized for each
+              subject. The AI Teacher will explain lessons, answer questions,
+              give examples, guide practice, help students review previous
+              topics, and support quizzes and assessments.
+            </p>
+
+            <p>
+              The learning system will also remember where the student stopped
+              and continue from that point instead of restarting the lesson.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Start Learning -->
+        <div
+          class="section-heading"
+          style="margin-top: 40px;"
+        >
+
+          <h2>
+            Ready to Start Learning?
+          </h2>
+
+          <p>
+            Continue to registration and begin your learning journey.
+          </p>
+
+          <a
+            href="signup.html"
+            class="btn btn-primary"
+            id="startLearningButton"
+          >
+            Start Learning
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+
+    <div class="container footer-content">
+
+      <div>
+        <h3>
+          AI International School
+        </h3>
+
+        <p>
+          Learn. Explore. Create. With AI.
+        </p>
+      </div>
+
+      <div>
+        <p>
+          © 2026 AI International School. All rights reserved.
+        </p>
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- Page Logic -->
+  <script>
+
+    /*
+     * AI International School
+     * Courses Page
+     *
+     * Flow:
+     * Visitor
+     *    ↓
+     * Education Level
+     *    ↓
+     * Class
+     *    ↓
+     * Subjects
+     *    ↓
+     * Subject AI Teacher
+     *    ↓
+     * Start Learning
+     *    ↓
+     * Registration
+     *
+     * Curriculum and subject data will later be connected
+     * to the school's real curriculum system.
+     */
+
+
+    const classData = {
+
+      primary: {
+        title: "Primary Classes",
+        description: "Choose a class from Primary P1 to P6.",
+        classes: [
+          "P1",
+          "P2",
+          "P3",
+          "P4",
+          "P5",
+          "P6"
+        ]
+      },
+
+      ordinary: {
+        title: "Ordinary Classes",
+        description: "Choose a class from S1 to S3.",
+        classes: [
+          "S1",
+          "S2",
+          "S3"
+        ]
+      },
+
+      secondary: {
+        title: "Secondary Classes",
+        description: "Choose a class from S4 to S6.",
+        classes: [
+          "S4",
+          "S5",
+          "S6"
+        ]
+      },
+
+      vocational: {
+        title: "Vocational Programs",
+        description: "Choose a practical or professional learning program.",
+        classes: [
+          "Vocational Program 1",
+          "Vocational Program 2",
+          "Vocational Program 3"
+        ]
+      }
+
+    };
+
+
+    /*
+     * Temporary subject structure.
+     *
+     * IMPORTANT:
+     * These are not the final curriculum subjects.
+     * The real subjects will be defined when we build
+     * the official curriculum for every class.
+     *
+     * The architecture already supports:
+     *
+     * Class
+     *   → Subject
+     *      → Subject AI Teacher
+     */
+
+    const subjectData = {
+
+      P1: [
+        "Subject 1",
+        "Subject 2",
+        "Subject 3"
+      ],
+
+      P2: [
+        "Subject 1",
+        "Subject 2",
+        "Subject 3"
+      ],
+
+      P3: [
+        "Subject 1",
+        "Subject 2",
+        "Subject 3"
+      ],
+
+      P4: [
+        "Subject 1",
+        "Subject 2",
+        "Subject 3"
+      ],
+
+      P5: [
+        "Subject 1",
+        "Subject 2",
+        "Subject 3"
+      ],
+
+      P6: [
+        "Subject 1",
+        "Subject 2",
+        "Subject 3"
+      ],
+
+      S1: [
+        "Subject 1",
+        "Subject 2",
+        "Subject 3"
+      ],
+
+      S2: [
+        "Subject 1",
+        "Subject 2",
+        "Subject 3"
+      ],
+
+      S3: [
+        "Subject 1",
+        "Subject 2",
+        "Subject 3"
+      ],
+
+      S4: [
+        "Subject 1",
+        "Subject 2",
+        "Subject 3"
+      ],
+
+      S5: [
+        "Subject 1",
+        "Subject 2",
+        "Subject 3"
+      ],
+
+      S6: [
+        "Subject 1",
+        "Subject 2",
+        "Subject 3"
+      ],
+
+      "Vocational Program 1": [
+        "Practical Subject 1",
+        "Practical Subject 2",
+        "Practical Subject 3"
+      ],
+
+      "Vocational Program 2": [
+        "Practical Subject 1",
+        "Practical Subject 2",
+        "Practical Subject 3"
+      ],
+
+      "Vocational Program 3": [
+        "Practical Subject 1",
+        "Practical Subject 2",
+        "Practical Subject 3"
+      ]
+
+    };
+
+
+    const levelNames = {
+
+      primary: "Primary",
+
+      ordinary: "Ordinary",
+
+      secondary: "Secondary",
+
+      vocational: "Vocational Programs"
+
+    };
+
+
+    /*
+     * Show classes for selected level.
+     */
+
+    function showClasses(level) {
+
+      const data = classData[level];
+
+      if (!data) {
+        return;
+      }
+
+
+      sessionStorage.setItem(
+        "selectedLevel",
+        level
+      );
+
+
+      sessionStorage.removeItem(
+        "selectedClass"
+      );
+
+
+      document.getElementById(
+        "classesSection"
+      ).style.display = "block";
+
+
+      document.getElementById(
+        "previewSection"
+      ).style.display = "none";
+
+
+      document.getElementById(
+        "classesTitle"
+      ).textContent = data.title;
+
+
+      document.getElementById(
+        "classesDescription"
+      ).textContent = data.description;
+
+
+      const container =
+        document.getElementById(
+          "classesContainer"
+        );
+
+
+      container.innerHTML = "";
+
+
+      data.classes.forEach(function (className) {
+
+        const card =
+          document.createElement("button");
+
+
+        card.type = "button";
+
+        card.className = "level-card";
+
+
+        card.innerHTML = `
+
+          <div class="level-icon">
+            🎓
+          </div>
+
+          <h3>
+            ${className}
+          </h3>
+
+          <p>
+            Explore this class
+          </p>
+
+          <span>
+            View subjects →
+          </span>
+
+        `;
+
+
+        card.addEventListener(
+          "click",
+          function () {
+
+            showClassPreview(
+              level,
+              className
+            );
+
+          }
+        );
+
+
+        container.appendChild(card);
+
+      });
+
+
+      document.getElementById(
+        "classesSection"
+      ).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    }
+
+
+    /*
+     * Show selected class preview and subjects.
+     */
+
+    function showClassPreview(
+      level,
+      className
+    ) {
+
+      sessionStorage.setItem(
+        "selectedLevel",
+        level
+      );
+
+
+      sessionStorage.setItem(
+        "selectedClass",
+        className
+      );
+
+
+      document.getElementById(
+        "previewSection"
+      ).style.display = "block";
+
+
+      document.getElementById(
+        "previewLevel"
+      ).textContent =
+        levelNames[level];
+
+
+      document.getElementById(
+        "previewClass"
+      ).textContent =
+        className;
+
+
+      document.getElementById(
+        "previewTitle"
+      ).textContent =
+        className + " Learning";
+
+
+      document.getElementById(
+        "previewDescription"
+      ).textContent =
+        "Explore the subjects available in " +
+        className +
+        " before starting your learning journey.";
+
+
+      const subjectsContainer =
+        document.getElementById(
+          "subjectsContainer"
+        );
+
+
+      subjectsContainer.innerHTML = "";
+
+
+      const subjects =
+        subjectData[className] || [];
+
+
+      if (subjects.length === 0) {
+
+        const message =
+          document.createElement("div");
+
+
+        message.className =
+          "learning-card";
+
+
+        message.innerHTML = `
+
+          <div class="learning-card-content">
+
+            <h3>
+              Curriculum Coming Soon
+            </h3>
+
+            <p>
+              The subjects for this class will be added
+              when the official curriculum is configured.
+            </p>
+
+          </div>
+
+        `;
+
+
+        subjectsContainer.appendChild(
+          message
+        );
+
+      } else {
+
+        subjects.forEach(
+          function (subject, index) {
+
+            const card =
+              document.createElement("div");
+
+
+            card.className =
+              "feature-card";
+
+
+            card.innerHTML = `
+
+              <div class="feature-icon">
+                ${getSubjectIcon(index)}
+              </div>
+
+              <h3>
+                ${subject}
+              </h3>
+
+              <p>
+                Dedicated AI Teacher
+              </p>
+
+              <span>
+                AI Teacher will explain,
+                guide practice, answer questions,
+                and help with quizzes.
+              </span>
+
+            `;
+
+
+            subjectsContainer.appendChild(
+              card
+            );
+
+          }
+        );
+
+      }
+
+
+      const startButton =
+        document.getElementById(
+          "startLearningButton"
+        );
+
+
+      startButton.href =
+        "signup.html";
+
+
+      document.getElementById(
+        "previewSection"
+      ).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    }
+
+
+    /*
+     * Subject icons.
+     */
+
+    function getSubjectIcon(index) {
+
+      const icons = [
+        "📘",
+        "🧮",
+        "🔬",
+        "🌍",
+        "💻",
+        "🎨",
+        "📝",
+        "🧠"
+      ];
+
+
+      return icons[
+        index % icons.length
+      ];
+
+    }
+
+
+    /*
+     * Make sure the selected class is preserved
+     * when the student clicks Start Learning.
+     */
+
+    document
+      .getElementById(
+        "startLearningButton"
+      )
+      .addEventListener(
+        "click",
+        function () {
+
+          const level =
+            sessionStorage.getItem(
+              "selectedLevel"
+            );
+
+
+          const className =
+            sessionStorage.getItem(
+              "selectedClass"
+            );
+
+
+          if (!level || !className) {
+
+            alert(
+              "Please choose a level and class first."
+            );
+
+
+            return;
+
+          }
+
+        }
+      );
+
+  </script>
+
+
+  <!-- Existing Global JavaScript -->
+  <script src="js/app.js"></script>
+
+</body>
+</html>
