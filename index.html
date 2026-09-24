@@ -1,13 +1,11 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AI International School - Learn, explore and create with AI.">
+  <meta name="description" content="AI International School - A structured learning platform for learners from age 2 and above, with curriculum, interactive lessons, AI learning support, practice and assessment.">
   <meta name="theme-color" content="#ffffff">
   <title>AI International School</title>
-
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -16,15 +14,15 @@
   <header class="site-header">
     <div class="container header-content">
 
-      <a href="index.html" class="brand">
+      <a href="index.html" class="brand" aria-label="AI International School Home">
         <span class="brand-name">AI International School</span>
       </a>
 
       <nav class="main-nav" aria-label="Main navigation">
         <a href="index.html" class="active">Home</a>
-        <a href="courses.html">Courses</a>
-        <a href="#ai-teacher">AI Teacher</a>
-        <a href="#ai-lab">AI Lab</a>
+        <a href="courses.html">Learning</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#ai-learning">AI Learning</a>
         <a href="#about">About</a>
       </nav>
 
@@ -33,7 +31,7 @@
         <a href="signup.html" class="btn btn-primary">Get Started</a>
       </div>
 
-      <button class="menu-button" id="menuButton" type="button" aria-label="Open menu" aria-expanded="false">
+      <button class="menu-button" id="menuButton" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span>
         <span></span>
         <span></span>
@@ -43,9 +41,9 @@
 
     <div class="mobile-menu" id="mobileMenu">
       <a href="index.html">Home</a>
-      <a href="courses.html">Courses</a>
-      <a href="#ai-teacher">AI Teacher</a>
-      <a href="#ai-lab">AI Lab</a>
+      <a href="courses.html">Learning</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#ai-learning">AI Learning</a>
       <a href="#about">About</a>
       <a href="login.html">Login</a>
       <a href="signup.html" class="mobile-get-started">Get Started</a>
@@ -59,19 +57,18 @@
       <div class="container hero-content">
 
         <div class="hero-text">
-          <span class="hero-badge">Learning powered by AI</span>
+          <span class="hero-badge">AI-Powered Learning</span>
 
           <h1>
-            Learn.
-            <span>Explore.</span>
-            Create.
-            With AI.
+            A School for
+            <span>Learning with AI.</span>
           </h1>
 
           <p>
-            AI International School is a modern learning platform designed
-            to help students learn, practice, create and grow with the help
-            of artificial intelligence.
+            AI International School is a structured digital learning
+            environment where learners can study curriculum-based lessons,
+            practice their knowledge, ask questions, and receive AI-powered
+            learning support.
           </p>
 
           <div class="hero-actions">
@@ -80,14 +77,14 @@
             </a>
 
             <a href="courses.html" class="btn btn-secondary btn-large">
-              Explore Courses
+              Explore Learning
             </a>
           </div>
 
           <div class="hero-note">
-            <span>15-Day Free Trial</span>
+            <span>For learners from age 2 and above</span>
             <span>•</span>
-            <span>Learn at your level</span>
+            <span>Learning follows stage and readiness</span>
           </div>
         </div>
 
@@ -95,25 +92,25 @@
           <div class="learning-card">
 
             <div class="card-top">
-              <span class="card-label">AI Learning</span>
-              <span class="card-status">● Active</span>
+              <span class="card-label">AISC Learning Journey</span>
+              <span class="card-status">● Ready</span>
             </div>
 
             <div class="ai-circle">
               <span>AI</span>
             </div>
 
-            <h2>Your AI Teacher</h2>
+            <h2>Learn Step by Step</h2>
 
             <p>
-              Ask questions, understand lessons, practice and improve
-              your knowledge.
+              Move from your learning stage to subjects, lessons, practice
+              and assessment in one connected learning environment.
             </p>
 
             <div class="learning-progress">
               <div class="progress-info">
-                <span>Learning progress</span>
-                <strong>72%</strong>
+                <span>Learning structure</span>
+                <strong>Connected</strong>
               </div>
 
               <div class="progress-bar">
@@ -128,71 +125,71 @@
     </section>
 
 
-    <section class="features" id="features">
+    <section class="features" id="ai-learning">
       <div class="container">
 
         <div class="section-heading">
-          <span class="section-label">Everything you need</span>
-          <h2>A smarter way to learn</h2>
+          <span class="section-label">What AISC provides</span>
+          <h2>One connected learning environment</h2>
           <p>
-            Learn through lessons, practice, AI assistance and assessments
-            in one connected learning environment.
+            AISC brings curriculum, lessons, practice, assessment and AI
+            learning support together in one place.
           </p>
         </div>
 
         <div class="feature-grid">
 
           <article class="feature-card">
-            <div class="feature-icon">🎓</div>
-            <h3>Learn by Level</h3>
+            <div class="feature-icon">📚</div>
+            <h3>Structured Curriculum</h3>
             <p>
-              Study according to your education level, from Primary to
-              Secondary.
-            </p>
-          </article>
-
-          <article class="feature-card" id="ai-teacher">
-            <div class="feature-icon">🤖</div>
-            <h3>AI Teacher</h3>
-            <p>
-              Get help understanding lessons, asking questions and
-              practicing difficult topics.
+              Learn through an organized structure of learning stages,
+              subjects, units, topics and lessons.
             </p>
           </article>
 
           <article class="feature-card">
-            <div class="feature-icon">📚</div>
-            <h3>Courses</h3>
+            <div class="feature-icon">🤖</div>
+            <h3>AI Learning Support</h3>
             <p>
-              Explore structured subjects and lessons designed for
-              continuous learning.
+              Use AI to ask questions, understand concepts, practice and
+              receive guidance while learning.
             </p>
           </article>
 
-          <article class="feature-card" id="ai-lab">
-            <div class="feature-icon">🧪</div>
-            <h3>AI Lab</h3>
+          <article class="feature-card">
+            <div class="feature-icon">🎓</div>
+            <h3>Learn at Your Stage</h3>
             <p>
-              Explore technology, experiments, projects and creative ideas
-              using AI.
+              AISC can serve learners from age 2 and above, with placement
+              based on the appropriate educational stage and readiness.
             </p>
           </article>
 
           <article class="feature-card">
             <div class="feature-icon">📝</div>
-            <h3>Quizzes & Assessments</h3>
+            <h3>Practice & Assessment</h3>
             <p>
-              Practice what you learn and measure your understanding through
-              quizzes and assessments.
+              Reinforce learning through activities, quizzes and assessments
+              that help learners check their understanding.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🧪</div>
+            <h3>AI Lab</h3>
+            <p>
+              Explore technology, projects, experiments and creative
+              activities where AI can support discovery and creation.
             </p>
           </article>
 
           <article class="feature-card">
             <div class="feature-icon">🏆</div>
-            <h3>Certificates</h3>
+            <h3>Progress & Certificates</h3>
             <p>
-              Track completed learning programs and earn certificates as
-              you progress.
+              Follow learning progress and, where applicable, complete
+              programs that lead to certificates.
             </p>
           </article>
 
@@ -205,11 +202,11 @@
       <div class="container">
 
         <div class="section-heading">
-          <span class="section-label">Education levels</span>
-          <h2>Learn at your level</h2>
+          <span class="section-label">Learning pathways</span>
+          <h2>Choose where you want to learn</h2>
           <p>
-            AI International School is structured around the student's
-            education level.
+            Explore the learning pathways available through the AISC
+            curriculum structure.
           </p>
         </div>
 
@@ -231,7 +228,7 @@
 
           <article class="level-card">
             <span class="level-number">03</span>
-            <h3>Secondary</h3>
+            <h3>Advanced Secondary</h3>
             <p>S4 to S6</p>
             <a href="courses.html">Explore Secondary</a>
           </article>
@@ -239,7 +236,7 @@
           <article class="level-card">
             <span class="level-number">04</span>
             <h3>Vocational Programs</h3>
-            <p>Practical skills and career learning</p>
+            <p>Practical and professional skills</p>
             <a href="courses.html">Explore Programs</a>
           </article>
 
@@ -248,38 +245,54 @@
     </section>
 
 
-    <section class="how-it-works">
+    <section class="how-it-works" id="how-it-works">
       <div class="container">
 
         <div class="section-heading">
-          <span class="section-label">Simple learning journey</span>
-          <h2>How it works</h2>
+          <span class="section-label">How AISC works</span>
+          <h2>A clear learning journey</h2>
+          <p>
+            The platform is organized so learners can understand where they
+            are and what to do next.
+          </p>
         </div>
 
         <div class="steps">
 
           <div class="step">
             <span class="step-number">1</span>
-            <h3>Create Account</h3>
-            <p>Create your student account and set up your learning profile.</p>
+            <h3>Choose Your Learning Stage</h3>
+            <p>
+              Start with the educational stage that matches the learner's
+              needs and readiness.
+            </p>
           </div>
 
           <div class="step">
             <span class="step-number">2</span>
-            <h3>Choose Your Level</h3>
-            <p>Select the education level and courses you want to study.</p>
+            <h3>Choose a Subject</h3>
+            <p>
+              Explore the subjects available within the selected learning
+              pathway.
+            </p>
           </div>
 
           <div class="step">
             <span class="step-number">3</span>
-            <h3>Learn & Practice</h3>
-            <p>Study lessons, ask the AI Teacher and practice your skills.</p>
+            <h3>Study the Lesson</h3>
+            <p>
+              Follow structured lessons using text, video, audio, images,
+              animation and other learning resources.
+            </p>
           </div>
 
           <div class="step">
             <span class="step-number">4</span>
-            <h3>Test & Progress</h3>
-            <p>Complete quizzes and assessments while tracking your progress.</p>
+            <h3>Practice & Check Understanding</h3>
+            <p>
+              Complete activities and assessments while receiving learning
+              support from AI.
+            </p>
           </div>
 
         </div>
@@ -292,11 +305,11 @@
 
         <div class="cta-card">
           <div>
-            <span class="section-label">Start your journey</span>
-            <h2>Build your future through learning.</h2>
+            <span class="section-label">AI International School</span>
+            <h2>Learning designed to grow with the learner.</h2>
             <p>
-              Join AI International School and discover a modern way
-              to learn with technology and AI.
+              AISC combines structured education with modern technology to
+              create a clear, interactive and supportive learning journey.
             </p>
           </div>
 
@@ -317,13 +330,13 @@
       <div>
         <h3>AI International School</h3>
         <p>
-          Learn. Explore. Create. With AI.
+          Structured learning. AI support. A global learning journey.
         </p>
       </div>
 
       <div class="footer-links">
         <a href="index.html">Home</a>
-        <a href="courses.html">Courses</a>
+        <a href="courses.html">Learning</a>
         <a href="login.html">Login</a>
         <a href="signup.html">Sign Up</a>
       </div>
@@ -342,4 +355,3 @@
 
 </body>
 </html>
-```
