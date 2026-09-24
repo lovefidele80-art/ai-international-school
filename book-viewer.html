@@ -57,6 +57,12 @@ const prev = document.getElementById("prev");
 const next = document.getElementById("next");
 const sidebar = document.getElementById("sidebar");
 
+function getPreviewToken(){
+  const hash = window.location.hash.replace(/^#/, "");
+  const params = new URLSearchParams(hash);
+  return params.get("preview") || "";
+}
+
 function escapeHtml(value){
   return String(value ?? "")
     .replaceAll("&","&amp;")
@@ -108,39 +114,55 @@ function render(){
 
 function showError(message){
   status.textContent = "Connection error";
-  book.innerHTML = "<div class='error'><h2>Book Viewer could not load the book</h2><p>" + escapeHtml(message) + "</p><p>Please check the book's publication/access settings and Supabase connection.</p></div>";
+  book.innerHTML = "<div class='error'><h2>Book Viewer could not load the book</h2><p>" + escapeHtml(message) + "</p></div>";
   counter.textContent = "Page 0 of 0";
   prev.disabled = true;
   next.disabled = true;
 }
 
 async function loadBook(){
-  status.textContent = "Loading AISC book...";
-  const { data: bookData, error: bookError } = await supabase
-    .from("aisc_books")
-    .select("id,title,code,level,subject,book_number,status,access_type,version")
-    .eq("code", BOOK_CODE)
-    .maybeSingle();
+  const previewToken = getPreviewToken();
+  status.textContent = previewToken ? "Loading secure draft preview..." : "Loading AISC book...";
 
-  if(bookError) throw bookError;
-  if(!bookData){
-    throw new Error("This book is not currently available to this viewer. The current book is still in draft/private state.");
+  let bookData;
+  let pageData;
+
+  if(previewToken){
+    const { data, error } = await supabase.rpc("aisc_preview_book", { p_token: previewToken });
+    if(error) throw error;
+    if(!data || !data.book) throw new Error("The secure preview is invalid, expired, or unavailable.");
+    bookData = data.book;
+    pageData = data.pages || [];
+  }else{
+    const { data, error } = await supabase
+      .from("aisc_books")
+      .select("id,title,code,level,subject,book_number,status,access_type,version")
+      .eq("code", BOOK_CODE)
+      .maybeSingle();
+
+    if(error) throw error;
+    if(!data){
+      throw new Error("This book is not currently available to this viewer.");
+    }
+
+    bookData = data;
+
+    const { data: rows, error: pageError } = await supabase
+      .from("aisc_book_pages")
+      .select("id,page_number,page_code,page_type,title,subtitle,content,sort_order,status")
+      .eq("book_id", bookData.id)
+      .order("sort_order",{ascending:true})
+      .order("page_number",{ascending:true});
+
+    if(pageError) throw pageError;
+    pageData = rows || [];
   }
 
   document.title = "AISC Book Viewer - " + bookData.title;
   document.getElementById("brand").textContent = "AI INTERNATIONAL SCHOOL · " + bookData.title;
+  pages = pageData;
 
-  const { data: pageData, error: pageError } = await supabase
-    .from("aisc_book_pages")
-    .select("id,page_number,page_code,page_type,title,subtitle,content,sort_order,status")
-    .eq("book_id", bookData.id)
-    .order("sort_order",{ascending:true})
-    .order("page_number",{ascending:true});
-
-  if(pageError) throw pageError;
-  pages = pageData || [];
-
-  if(!pages.length) throw new Error("The book is published but has no pages available yet.");
+  if(!pages.length) throw new Error("The book has no pages available yet.");
 
   list.innerHTML = "";
   pages.forEach((p,index) => {
@@ -151,7 +173,7 @@ async function loadBook(){
     list.appendChild(button);
   });
 
-  status.textContent = pages.length + " pages loaded from Supabase";
+  status.textContent = (previewToken ? "Secure preview · " : "") + pages.length + " pages loaded from Supabase";
   current = 0;
   render();
 }
