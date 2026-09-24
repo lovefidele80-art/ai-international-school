@@ -42,6 +42,7 @@
             <option value="hi">हिन्दी</option>
             <option value="zh">中文</option>
           </select>
+          <span class="current-language" id="currentLanguage">English</span>
         </label>
         <a href="login.html" class="login-link">Login</a>
         <a href="signup.html" class="btn btn-primary">Get Started</a>
@@ -70,6 +71,7 @@
           <option value="hi">हिन्दी</option>
           <option value="zh">中文</option>
         </select>
+        <span class="current-language mobile-current-language" id="mobileCurrentLanguage">English</span>
       </label>
       <a href="index.html">Home</a>
       <a href="courses.html">Learning</a>
@@ -398,6 +400,17 @@
       padding: 8px 10px;
       font: inherit;
       cursor: pointer;
+    }
+
+    .current-language {
+      color: #475569;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .mobile-current-language {
+      margin-left: 8px;
     }
 
     .mobile-language-selector {
