@@ -1,0 +1,147 @@
+/* AISC Phone Projector Prototype 1 */
+#aiscProjector {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#aiscProjector[hidden] { display: none; }
+
+.aisc-projector-top {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(0,0,0,.82);
+}
+
+.aisc-projector-brand {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.aisc-projector-status {
+  font-size: 12px;
+  color: #a7f3d0;
+  text-align: right;
+}
+
+.aisc-projector-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #000;
+}
+
+#aiscProjectorCamera {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .22;
+  filter: grayscale(1) contrast(1.15);
+}
+
+.aisc-projector-test-card {
+  position: relative;
+  z-index: 2;
+  width: min(88vw, 620px);
+  padding: 34px 24px;
+  border: 2px solid rgba(255,255,255,.85);
+  border-radius: 20px;
+  background: rgba(0,0,0,.72);
+  text-align: center;
+  box-shadow: 0 0 35px rgba(255,255,255,.08);
+}
+
+.aisc-projector-test-card .test-label {
+  margin-bottom: 14px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: .72;
+}
+
+.aisc-projector-test-card h1 {
+  margin: 0 0 12px;
+  font-size: clamp(34px, 9vw, 72px);
+  line-height: 1;
+}
+
+.aisc-projector-test-card p {
+  margin: 0;
+  font-size: clamp(16px, 4vw, 25px);
+  line-height: 1.45;
+}
+
+.aisc-projector-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: .14;
+  background-image:
+    linear-gradient(rgba(255,255,255,.7) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.7) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+.aisc-projector-bottom {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(0,0,0,.88);
+}
+
+.aisc-projector-button {
+  min-height: 42px;
+  padding: 9px 14px;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 10px;
+  background: #111;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.aisc-projector-button.primary {
+  background: #fff;
+  color: #000;
+}
+
+.aisc-projector-help {
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  color: #aaa;
+}
+
+.aisc-projector-error {
+  color: #fecaca;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .aisc-projector-top { padding: 10px 12px; }
+  .aisc-projector-test-card { padding: 28px 18px; }
+  .aisc-projector-bottom { padding-bottom: calc(10px + env(safe-area-inset-bottom)); }
+}
