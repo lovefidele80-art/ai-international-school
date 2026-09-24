@@ -21,6 +21,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const languageSelect = document.getElementById("languageSelect");
   const mobileLanguageSelect = document.getElementById("mobileLanguageSelect");
 
+  const languageNames = {
+    en: "English",
+    rw: "Kinyarwanda",
+    fr: "Français",
+    sw: "Kiswahili",
+    es: "Español",
+    pt: "Português",
+    de: "Deutsch",
+    ar: "العربية",
+    hi: "हिन्दी",
+    zh: "中文"
+  };
+
   const savedLanguage = localStorage.getItem("aisc_language") || "en";
 
   function applyLanguage(language) {
@@ -36,6 +49,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (languageSelect) languageSelect.value = language;
     if (mobileLanguageSelect) mobileLanguageSelect.value = language;
+
+    const languageName = languageNames[language] || languageNames.en;
+    const currentLanguage = document.getElementById("currentLanguage");
+    const mobileCurrentLanguage = document.getElementById("mobileCurrentLanguage");
+
+    if (currentLanguage) currentLanguage.textContent = languageName;
+    if (mobileCurrentLanguage) mobileCurrentLanguage.textContent = languageName;
   }
 
   if (languageSelect) {
