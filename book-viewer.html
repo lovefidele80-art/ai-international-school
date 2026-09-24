@@ -3,70 +3,173 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AISC Book Viewer - P1 Mathematics Book 1</title>
+<title>AISC Book Viewer</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#eef2f7;color:#17202a;font-family:Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:#eef2f7;color:#17202a;font-family:Arial,sans-serif}
 .toolbar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #d7dde5;padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .brand{font-weight:700;margin-right:auto}.toolbar button{padding:9px 12px;border:1px solid #cbd3dc;border-radius:8px;background:#fff;cursor:pointer}.toolbar button:disabled{opacity:.45;cursor:not-allowed}
-.layout{display:grid;grid-template-columns:280px 1fr;min-height:calc(100vh - 62px)}
+.status{font-size:13px;color:#52606d;max-width:420px}
+.layout{display:grid;grid-template-columns:300px 1fr;min-height:calc(100vh - 62px)}
 .sidebar{background:#fff;border-right:1px solid #d7dde5;padding:15px;overflow:auto}.sidebar h3{margin:0 0 12px}.pages{display:flex;flex-direction:column;gap:4px}.page-link{border:0;background:transparent;text-align:left;padding:9px;border-radius:7px;cursor:pointer}.page-link.active{background:#e8eef7;font-weight:700}
-.reader{padding:24px;display:flex;justify-content:center}.page{width:min(900px,100%);min-height:1120px;background:#fff;padding:62px;position:relative;box-shadow:0 3px 18px #0001}.cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
-.kicker{font-size:13px;color:#68727e;border-bottom:1px solid #e3e7ec;padding-bottom:12px;margin-bottom:28px}.title{font-size:36px;margin:0 0 12px}.subtitle{font-size:19px;color:#52606d;margin-bottom:26px}.body{font-size:18px;line-height:1.65}.callout{margin:25px 0;padding:18px;border:1px solid #d6dce4;border-radius:12px;background:#f8fafc}
-.math{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:20px 0}.num{border:2px solid #20252b;border-radius:10px;padding:12px 18px;font-size:30px;font-weight:700}.dots{font-size:25px;letter-spacing:5px}.activity{margin-top:25px;padding:18px;border:2px dashed #aeb7c2;border-radius:12px}.footer{position:absolute;left:62px;right:62px;bottom:22px;border-top:1px solid #e3e7ec;padding-top:9px;text-align:center;color:#68727e;font-size:13px}
-@media(max-width:760px){.layout{grid-template-columns:1fr}.sidebar{display:none}.reader{padding:8px}.page{padding:28px 22px;min-height:800px}.title{font-size:28px}.body{font-size:16px}.footer{left:22px;right:22px}}
+.reader{padding:24px;display:flex;justify-content:center}.page{width:min(900px,100%);min-height:1120px;background:#fff;padding:62px;position:relative;box-shadow:0 3px 18px #0001}
+.title{font-size:36px;margin:0 0 12px}.subtitle{font-size:19px;color:#52606d;margin-bottom:26px}.body{font-size:18px;line-height:1.65;white-space:normal}
+.kicker{font-size:13px;color:#68727e;border-bottom:1px solid #e3e7ec;padding-bottom:12px;margin-bottom:28px}
+.cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}.cover .title{font-size:42px}
+.callout{margin:25px 0;padding:18px;border:1px solid #d6dce4;border-radius:12px;background:#f8fafc}
+.math{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:20px 0}.num{border:2px solid #20252b;border-radius:10px;padding:12px 18px;font-size:30px;font-weight:700}.dots{font-size:25px;letter-spacing:5px}
+.activity{margin-top:25px;padding:18px;border:2px dashed #aeb7c2;border-radius:12px}
+.loading,.error{width:min(700px,100%);margin:60px auto;padding:24px;background:#fff;border-radius:14px;box-shadow:0 3px 18px #0001;text-align:center}.error{border:1px solid #e2b8b8}
+.footer{position:absolute;left:62px;right:62px;bottom:22px;border-top:1px solid #e3e7ec;padding-top:9px;text-align:center;color:#68727e;font-size:13px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.sidebar{display:none}.reader{padding:8px}.page{padding:28px 22px;min-height:800px}.title{font-size:28px}.cover .title{font-size:32px}.body{font-size:16px}.footer{left:22px;right:22px}}
 </style>
 </head>
 <body>
 <div class="toolbar">
-<div class="brand">AI INTERNATIONAL SCHOOL · Book Viewer</div>
-<button id="prev">← Previous</button>
-<button id="next">Next →</button>
-<span id="counter">Page 1 of 1</span>
+<div class="brand" id="brand">AI INTERNATIONAL SCHOOL · Book Viewer</div>
+<button id="prev" disabled>← Previous</button>
+<button id="next" disabled>Next →</button>
+<span id="counter">Page 0 of 0</span>
 <button id="contents">☰ Contents</button>
+<span class="status" id="status">Connecting to AISC content...</span>
 </div>
 <div class="layout">
 <aside class="sidebar" id="sidebar"><h3>Book Contents</h3><div class="pages" id="pages"></div></aside>
-<main class="reader"><article class="page" id="book"></article></main>
+<main class="reader"><article class="page" id="book"><div class="loading">Loading P1 Mathematics Book 1...</div></article></main>
 </div>
-<script>
-const pages=[
-{cover:true,title:"P1 MATHEMATICS",subtitle:"BOOK 1",body:"Learning Mathematics Through Understanding, Practice and Discovery"},
-{title:"Welcome to Mathematics",body:"Mathematics helps us understand numbers, shapes, patterns, measurements, time, money and the world around us."},
-{title:"Table of Contents",body:"Unit 1: Number Sense & Counting\n\nUnit 2: Quantity, Comparison & Relationships\n\nUnit 3: Addition & Subtraction Foundations\n\nUnit 4: Shapes & Geometry\n\nUnit 5: Patterns & Mathematical Relationships\n\nUnit 6: Measurement\n\nUnit 7: Time\n\nUnit 8: Position, Direction & Space\n\nUnit 9: Money & Everyday Mathematics\n\nUnit 10: Data, Sorting & Classification\n\nUnit 11: Mathematical Reasoning & Problem Solving\n\nUnit 12: Review, Integration & Mastery"},
-{title:"Unit 1: Number Sense & Counting",subtitle:"Unit Introduction",body:"We begin by noticing, naming and understanding numbers. We will connect numbers to quantities and use counting in meaningful situations."},
-{title:"Topic 1: Number Awareness",subtitle:"Lesson 1 · Numbers Are Everywhere",body:"Numbers appear on clocks, calendars, houses, books, phones and signs. A number can tell us how many, which one, or where something belongs.",visual:true},
-{title:"Finding Numbers Around Me",subtitle:"Lesson 2",body:"Look around you and find numbers. What numbers can you see on a clock, a page, a door, a phone or a calendar?",activity:"Draw or write three places where you can find numbers."},
-{title:"Numbers Help Us Count",subtitle:"Lesson 3",body:"We use number words in order when we count: 1, 2, 3, 4, 5. Each number tells the quantity reached so far.",visual:true},
-{title:"Counting Carefully",subtitle:"Lesson 4",body:"When counting objects, touch or point to each object once. Keep the numbers in order. The last number you say tells how many objects there are.",activity:"Count 5 objects. Count them again slowly. Did you get the same answer?"},
-{title:"Check Your Understanding",body:"1. Name a place where you see a number.\n\n2. Count aloud from 1 to 10.\n\n3. Why should we count each object only once?"},
-{title:"Mini Challenge",body:"Find 5 different numbers around you. Say each number aloud. Choose one number and draw that many objects.",visual:true},
-{title:"Lessons 1–4 Review",body:"Remember: numbers are useful, numbers can be seen in real life, counting uses an ordered sequence, and careful counting gives a reliable quantity."},
-{title:"Master Checkpoint",body:"Recognize: Can you identify numbers?\n\nCount: Can you count objects in order?\n\nMatch: Can you connect a number to a quantity?\n\nExplain: Can you tell how you counted?\n\nApply: Can you use counting in a new situation?"},
-{title:"Mathematics Explorer",body:"Ask someone at home or school to show you three numbers. Find out what each number tells you. Share your discoveries."},
-{title:"Coming Next",subtitle:"Topic 2 · Quantity Recognition",body:"Next we will connect numbers with actual quantities. We will learn to see, count, match and describe how many."}
-];
-let current=0;
-const book=document.getElementById("book"), list=document.getElementById("pages"), counter=document.getElementById("counter");
-function render(){
- const p=pages[current];
- book.className="page"+(p.cover?" cover":"");
- let h=p.cover?"":"<div class='kicker'>AI INTERNATIONAL SCHOOL · P1 MATHEMATICS · BOOK 1</div>";
- h+="<h1 class='title'>"+p.title+"</h1>";
- if(p.subtitle)h+="<div class='subtitle'>"+p.subtitle+"</div>";
- h+="<div class='body'>"+p.body.replaceAll("\n","<br>")+"</div>";
- if(p.visual)h+="<div class='math'><span class='num'>1</span><span class='num'>2</span><span class='num'>3</span><span class='num'>4</span><span class='num'>5</span></div><div class='callout'><strong>Look:</strong> 3 means three objects. <span class='dots'>● ● ●</span></div>";
- if(p.activity)h+="<div class='activity'><strong>Activity:</strong> "+p.activity+"</div>";
- h+="<div class='footer'>P1 Mathematics · Book 1 · Page "+(current+1)+"</div>";
- book.innerHTML=h;counter.textContent="Page "+(current+1)+" of "+pages.length;
- document.querySelectorAll(".page-link").forEach((b,n)=>b.classList.toggle("active",n===current));
- document.getElementById("prev").disabled=current===0;document.getElementById("next").disabled=current===pages.length-1;
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+const SUPABASE_URL = "https://ajmxlkryvdqsocqkapbv.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_6sfkoMA7GBjO1dml1Q0hMw_FarQ2pnK";
+const BOOK_CODE = "P1-MATH-BOOK-1";
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+let pages = [];
+let current = 0;
+
+const book = document.getElementById("book");
+const list = document.getElementById("pages");
+const counter = document.getElementById("counter");
+const status = document.getElementById("status");
+const prev = document.getElementById("prev");
+const next = document.getElementById("next");
+const sidebar = document.getElementById("sidebar");
+
+function escapeHtml(value){
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 }
-pages.forEach((p,n)=>{const b=document.createElement("button");b.className="page-link";b.textContent=(n+1)+". "+p.title;b.onclick=()=>{current=n;render()};list.appendChild(b)});
-document.getElementById("prev").onclick=()=>{if(current>0){current--;render()}};
-document.getElementById("next").onclick=()=>{if(current<pages.length-1){current++;render()}};
-document.getElementById("contents").onclick=()=>{document.getElementById("sidebar").style.display=document.getElementById("sidebar").style.display==="none"?"block":""};
-document.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"&&current>0){current--;render()}if(e.key==="ArrowRight"&&current<pages.length-1){current++;render()}});
-render();
+
+function renderContent(content){
+  if(content === null || content === undefined) return "";
+  if(typeof content === "string") return escapeHtml(content).replaceAll("\n","<br>");
+  if(Array.isArray(content)) return content.map(item => renderContent(item)).join("<br>");
+  if(typeof content === "object"){
+    const preferred = ["text","body","description","instructions","content"];
+    for(const key of preferred){
+      if(typeof content[key] === "string") return escapeHtml(content[key]).replaceAll("\n","<br>");
+    }
+    return Object.entries(content)
+      .map(([key,value]) => "<strong>"+escapeHtml(key)+":</strong> "+renderContent(value))
+      .join("<br>");
+  }
+  return escapeHtml(content);
+}
+
+function render(){
+  if(!pages.length) return;
+  const p = pages[current];
+  const title = p.title || "Untitled Page";
+  const subtitle = p.subtitle || "";
+  const content = renderContent(p.content);
+
+  book.className = "page" + (p.page_type === "cover" ? " cover" : "");
+  let html = p.page_type === "cover" ? "" : "<div class='kicker'>AI INTERNATIONAL SCHOOL · P1 MATHEMATICS · BOOK 1</div>";
+  html += "<h1 class='title'>" + escapeHtml(title) + "</h1>";
+  if(subtitle) html += "<div class='subtitle'>" + escapeHtml(subtitle) + "</div>";
+  if(content) html += "<div class='body'>" + content + "</div>";
+  html += "<div class='footer'>P1 Mathematics · Book 1 · Page " + (p.page_number ?? current + 1) + "</div>";
+  book.innerHTML = html;
+
+  counter.textContent = "Page " + (current + 1) + " of " + pages.length;
+  prev.disabled = current === 0;
+  next.disabled = current === pages.length - 1;
+  document.querySelectorAll(".page-link").forEach((button,index) => {
+    button.classList.toggle("active",index === current);
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function showError(message){
+  status.textContent = "Connection error";
+  book.innerHTML = "<div class='error'><h2>Book Viewer could not load the book</h2><p>" + escapeHtml(message) + "</p><p>Please check the book's publication/access settings and Supabase connection.</p></div>";
+  counter.textContent = "Page 0 of 0";
+  prev.disabled = true;
+  next.disabled = true;
+}
+
+async function loadBook(){
+  status.textContent = "Loading AISC book...";
+  const { data: bookData, error: bookError } = await supabase
+    .from("aisc_books")
+    .select("id,title,code,level,subject,book_number,status,access_type,version")
+    .eq("code", BOOK_CODE)
+    .maybeSingle();
+
+  if(bookError) throw bookError;
+  if(!bookData){
+    throw new Error("This book is not currently available to this viewer. The current book is still in draft/private state.");
+  }
+
+  document.title = "AISC Book Viewer - " + bookData.title;
+  document.getElementById("brand").textContent = "AI INTERNATIONAL SCHOOL · " + bookData.title;
+
+  const { data: pageData, error: pageError } = await supabase
+    .from("aisc_book_pages")
+    .select("id,page_number,page_code,page_type,title,subtitle,content,sort_order,status")
+    .eq("book_id", bookData.id)
+    .order("sort_order",{ascending:true})
+    .order("page_number",{ascending:true});
+
+  if(pageError) throw pageError;
+  pages = pageData || [];
+
+  if(!pages.length) throw new Error("The book is published but has no pages available yet.");
+
+  list.innerHTML = "";
+  pages.forEach((p,index) => {
+    const button = document.createElement("button");
+    button.className = "page-link";
+    button.textContent = (p.page_number ?? index + 1) + ". " + (p.title || p.page_code || "Page");
+    button.onclick = () => { current = index; render(); };
+    list.appendChild(button);
+  });
+
+  status.textContent = pages.length + " pages loaded from Supabase";
+  current = 0;
+  render();
+}
+
+prev.onclick = () => { if(current > 0){ current--; render(); } };
+next.onclick = () => { if(current < pages.length - 1){ current++; render(); } };
+document.addEventListener("keydown", event => {
+  if(event.key === "ArrowLeft" && current > 0){ current--; render(); }
+  if(event.key === "ArrowRight" && current < pages.length - 1){ current++; render(); }
+});
+document.getElementById("contents").onclick = () => {
+  sidebar.style.display = sidebar.style.display === "none" ? "block" : "";
+};
+
+loadBook().catch(error => {
+  console.error(error);
+  showError(error.message || "Unknown error");
+});
 </script>
 </body>
 </html>
